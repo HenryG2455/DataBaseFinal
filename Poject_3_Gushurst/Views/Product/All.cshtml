@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Poject_3_Gushurst.Models.Product>
+
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>List of all Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Upsert")
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <input id="txtSearch" type="text" class="form-control" placeholder="Search..." />
+    </div>
+    <div class="col-md-6">
+        <input type="button" class="btn" value="Search" onclick="Sortable.search();" />
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th onclick="Sortable.sort(0);">
+            @Html.DisplayNameFor(model => model.ProductCode)
+        </th>
+        <th onclick="Sortable.sort(1);">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th onclick="Sortable.sort(2);">
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th onclick="Sortable.sort(3);">
+            @Html.DisplayNameFor(model => model.OnHandQuantity)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OnHandQuantity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Upsert", new { id= item.ProductCode.Trim() }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductCode.Trim()})
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+    Sortable.baseUrl = '/Product/All/';
+</script>

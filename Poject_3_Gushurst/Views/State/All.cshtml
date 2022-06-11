@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Poject_3_Gushurst.Models.State>
+
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>List of all States</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Upsert")
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <input id="txtSearch" type="text" class="form-control" placeholder="Search..." />
+    </div>
+    <div class="col-md-6">
+        <input type="button" class="btn" value="Search" onclick="Sortable.search();" />
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th onclick="Sortable.sort(0);">
+            @Html.DisplayNameFor(model => model.StateCode)
+        </th>
+        <th onclick="Sortable.sort(1);">
+            @Html.DisplayNameFor(model => model.StateName)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Upsert", new {  id=item.StateCode}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StateCode})
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+    Sortable.baseUrl = '/State/All/';
+</script>

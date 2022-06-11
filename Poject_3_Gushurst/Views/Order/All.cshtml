@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Poject_3_Gushurst.Models.OrderOption>
+
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>List of all Orders</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Upsert")
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <input id="txtSearch" type="text" class="form-control" placeholder="Search..." />
+    </div>
+    <div class="col-md-6">
+        <input type="button" class="btn" value="Search" onclick="Sortable.search();" />
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th  onclick="Sortable.sort(0);">
+            @Html.DisplayNameFor(model => model.SalesTaxRate)
+        </th>
+        <th onclick="Sortable.sort(0);">
+            @Html.DisplayNameFor(model => model.FirstBookShipCharge)
+        </th>
+        <th onclick="Sortable.sort(0);">
+            @Html.DisplayNameFor(model => model.AdditionalBookShipCharge)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesTaxRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstBookShipCharge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdditionalBookShipCharge)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Upsert", new {  id=item.SalesTaxRate  }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.SalesTaxRate })
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+    Sortable.baseUrl = '/Order/All/';
+</script>

@@ -1,0 +1,34 @@
+﻿body {
+    background-color: rgba(187, 245, 39, 0.18) !important;
+}
+
+th:hover{
+    cursor:pointer;
+}
+
+tr:hover {
+    background-color: rgba(127, 63, 191, 0.24);
+}
+
+.sortable th:hover {
+    cursor: pointer;
+}
+
+.addBtn {
+    margin-top: 10px !important;
+}
+.headContainer{
+    background-color: antiquewhite !important;
+}
+table {
+    margin-top: 5px !important;
+    border: solid grey thin !important;
+    box-shadow: 3px 8px #E1A2F5 !important;
+}
+.jumbotron {
+    box-shadow: 5px 8px #E1A2F5 !important;
+    border: solid thin black !important;
+}
+.navHead {
+    background-color: #15161F !important;
+}

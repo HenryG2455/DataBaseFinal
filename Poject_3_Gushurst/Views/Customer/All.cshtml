@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Poject_3_Gushurst.Models.Customer>
+
+@{
+    ViewBag.Title = "All";
+}
+<div>
+    <h2>List of all Cutomers</h2>
+</div>
+<p>
+    @Html.ActionLink("Create New", "Upsert")
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <input id="txtSearch" type="text" class="form-control" placeholder="Search..." />
+    </div>
+    <div class="col-md-6">
+        <input type="button" class="btn" value="Search" onclick="Sortable.search();" />
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th onclick="Sortable.sort(0);">
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th onclick="Sortable.sort(1);">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th onclick="Sortable.sort(2);">
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th onclick="Sortable.sort(3);">
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th onclick="Sortable.sort(4);">
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th onclick="Sortable.sort(5);">
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+        <th>Acions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Upsert", new { id = item.CustomerID }) |
+            @Html.ActionLink("Delete","Delete", new {id = item.CustomerID})
+        </td>
+    </tr>
+}
+
+</table>
+<script>
+    Sortable.baseUrl = '/Customer/All/';
+</script>

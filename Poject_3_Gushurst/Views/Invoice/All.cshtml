@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Poject_3_Gushurst.Models.Invoice>
+
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>List of all Invoices</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Upsert")
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <input id="txtSearch" type="text" class="form-control" placeholder="Search..." />
+    </div>
+    <div class="col-md-6">
+        <input type="button" class="btn" value="Search" onclick="Sortable.search();" />
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th onclick="Sortable.sort(0);">
+            @Html.DisplayNameFor(model => model.InvoiceID)
+        </th>
+        <th onclick="Sortable.sort(1);">
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th onclick="Sortable.sort(2);">
+            @Html.DisplayNameFor(model => model.InvoiceDate)
+        </th>
+        <th onclick="Sortable.sort(3);">
+            @Html.DisplayNameFor(model => model.ProductTotal)
+        </th>
+        <th onclick="Sortable.sort(4);">
+            @Html.DisplayNameFor(model => model.SalesTax)
+        </th>
+        <th onclick="Sortable.sort(5);">
+            @Html.DisplayNameFor(model => model.Shipping)
+        </th>
+        <th onclick="Sortable.sort(6);">
+            @Html.DisplayNameFor(model => model.InvoiceTotal)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.InvoiceID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CustomerID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.InvoiceDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductTotal)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SalesTax)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Shipping)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.InvoiceTotal)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Upsert", new { id = item.InvoiceID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.InvoiceID })
+    </td>
+</tr>
+}
+
+</table>
+<script>
+    Sortable.baseUrl = '/Invoice/All/';
+</script>
